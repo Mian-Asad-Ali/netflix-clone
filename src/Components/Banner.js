@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import requests from "../request";
+import requests from ".1./request";
 import axiose from "../axiose";
 import "../style/Banner.css";
 
@@ -11,7 +11,7 @@ const Banner = () => {
       const request = await axiose.get(requests.fetchNetflixOriginals);
       setMovie(
         request.data.results[
-          Math.floor(Math.random() * request.data.results.length)
+        Math.floor(Math.random() * request.data.results.length)
         ]
       );
       return request;
@@ -19,8 +19,8 @@ const Banner = () => {
     fetchData();
   }, []);
   //   console.log(movie);
-  function truncate(str,n){
-      return str?.length>n?str.substr(0,n-1)+"...":str;
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
   return (
     <header
@@ -30,7 +30,7 @@ const Banner = () => {
         backgroundImage: `url(
             "https://image.tmdb.org/t/p/original/${movie?.backdrop_path}"
         )`,
-        backgroundPosition:'center center'
+        backgroundPosition: 'center center'
       }}
     >
       <div className="banner_contetents">
@@ -42,7 +42,7 @@ const Banner = () => {
         <button className="banner_button">PLAY</button>
         <button className="banner_button">MY LIST</button>
         {/* description */}
-        <h1 className="banner_desscription">{truncate(movie?.overview,150)}</h1>
+        <h1 className="banner_desscription">{truncate(movie?.overview, 150)}</h1>
       </div>
       <div className='banner_fadeBottom'></div>
     </header>
